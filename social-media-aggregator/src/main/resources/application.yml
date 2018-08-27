@@ -1,0 +1,11 @@
+server:
+  port: 8080
+twitter:
+  api:
+    url: https://api.twitter.com/1.1/search/tweets.json
+spring:
+  jpa:
+    database: mysql
+  datasource:
+    username: root
+    password: password
