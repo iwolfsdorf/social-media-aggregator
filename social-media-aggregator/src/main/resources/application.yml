@@ -3,6 +3,10 @@ server:
 twitter:
   api:
     url: https://api.twitter.com/1.1/search/tweets.json
+    customer-key: AUpijFmS5tkqZy4Rrifcxu5Gc
+    customer-secret: BS3k4wlEgE9z9MSTsZRVxNvGmarS8Lk68gRqrg0SsOZw9eKL5i
+    token-key: 449533890-Wkfw8bmZAcwn1OTn9T8c65aj3Sqmyo4STiyzBBN4
+    token-secret: YzIUmeLS4yd0ayE9AbV2YGz2FfmsmzAuW4Y9xK6XtS3uK
 spring:
   jpa:
     database: mysql
