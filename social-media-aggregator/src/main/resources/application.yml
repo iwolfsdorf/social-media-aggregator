@@ -9,7 +9,9 @@ twitter:
     token-secret: YzIUmeLS4yd0ayE9AbV2YGz2FfmsmzAuW4Y9xK6XtS3uK
 spring:
   jpa:
-    database: mysql
+    hibernate:
+      ddl-auto: update
   datasource:
-    username: root
+    url: jdbc:mysql://localhost:3306/social_media_aggregator
+    username: user
     password: password
