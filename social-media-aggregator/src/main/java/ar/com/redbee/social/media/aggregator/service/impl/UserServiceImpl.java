@@ -31,8 +31,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String test() {
-		return twitterApiClient.test();
+	public String search(final String query) {
+		return twitterApiClient.search(query);
+	}
+
+	@Override
+	public User getUserByUsername(final String username) throws ServiceException {
+		final Optional<User> userOptional = userDao.findByUsername(username);
+		if (userOptional.isPresent()) {
+			return userOptional.get();
+		} else {
+			throw new ServiceException("No se encontro el usuario con username " + username);
+		}
 	}
 
 }

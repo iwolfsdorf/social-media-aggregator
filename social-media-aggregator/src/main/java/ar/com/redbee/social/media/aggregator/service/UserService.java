@@ -7,6 +7,8 @@ public interface UserService {
 
 	User getUser(Long id) throws ServiceException;
 
-	String test();
+	String search(String query);
+
+	User getUserByUsername(String username) throws ServiceException;
 
 }
