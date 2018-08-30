@@ -10,23 +10,20 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Entity
-@Table(name = "TWEET")
-public class Tweet {
+@Table(name = "INTEREST")
+public class Interest {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String fromUser;
+	private String description;
 
-	private String text;
-
-	public Tweet() {
+	public Interest() {
 	}
 
-	public Tweet(final String fromUser, final String text) {
-		this.fromUser = fromUser;
-		this.text = text;
+	public Interest(final String description) {
+		this.description = description;
 	}
 
 	public Long getId() {
@@ -37,24 +34,12 @@ public class Tweet {
 		this.id = id;
 	}
 
-	public String getText() {
-		return text;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setText(final String text) {
-		this.text = text;
-	}
-
-	public String getFromUser() {
-		return fromUser;
-	}
-
-	public void setFromUser(final String fromUser) {
-		this.fromUser = fromUser;
-	}
-
-	public static Tweet toTweet(final org.springframework.social.twitter.api.Tweet tweet) {
-		return new Tweet(tweet.getFromUser(), tweet.getText());
+	public void setDescription(final String description) {
+		this.description = description;
 	}
 
 	@Override

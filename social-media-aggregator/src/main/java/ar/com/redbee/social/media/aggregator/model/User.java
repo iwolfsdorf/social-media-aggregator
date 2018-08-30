@@ -14,6 +14,9 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @Entity
 @Table(name = "USER", uniqueConstraints = { @UniqueConstraint(columnNames = { "username" }) })
 public class User {
@@ -32,6 +35,9 @@ public class User {
 	@OneToMany(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "USER_ID")
 	private List<Board> boards;
+
+	public User() {
+	}
 
 	public User(final String username, final String password) {
 		this.username = username;
@@ -68,6 +74,16 @@ public class User {
 
 	public void setBoards(final List<Board> boards) {
 		this.boards = boards;
+	}
+
+	@Override
+	public String toString() {
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			return mapper.writeValueAsString(this);
+		} catch (JsonProcessingException e) {
+			return "";
+		}
 	}
 
 }
