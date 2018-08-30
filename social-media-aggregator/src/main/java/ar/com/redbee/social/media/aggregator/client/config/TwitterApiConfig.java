@@ -10,8 +10,6 @@ public class TwitterApiConfig {
 	private String url;
 	private String customerKey;
 	private String customerSecret;
-	private String tokenKey;
-	private String tokenSecret;
 
 	public String getUrl() {
 		return url;
@@ -37,19 +35,4 @@ public class TwitterApiConfig {
 		this.customerSecret = customerSecret;
 	}
 
-	public String getTokenKey() {
-		return tokenKey;
-	}
-
-	public void setTokenKey(final String tokenKey) {
-		this.tokenKey = tokenKey;
-	}
-
-	public String getTokenSecret() {
-		return tokenSecret;
-	}
-
-	public void setTokenSecret(final String tokenSecret) {
-		this.tokenSecret = tokenSecret;
-	}
 }
