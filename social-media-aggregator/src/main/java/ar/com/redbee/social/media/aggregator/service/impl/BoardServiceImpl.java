@@ -1,9 +1,11 @@
 package ar.com.redbee.social.media.aggregator.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 import ar.com.redbee.social.media.aggregator.dao.BoardDao;
 import ar.com.redbee.social.media.aggregator.exception.ServiceException;
@@ -29,6 +31,15 @@ public class BoardServiceImpl implements BoardService {
     } else {
       throw new ServiceException("No existe el board con id " + id);
     }
+  }
+
+  @Override
+  public List<Board> getAll() throws ServiceException {
+    final List<Board> boards = new ArrayList<>();
+    for (final Board board : boardDao.findAll()) {
+      boards.add(board);
+    }
+    return boards;
   }
 
 }
