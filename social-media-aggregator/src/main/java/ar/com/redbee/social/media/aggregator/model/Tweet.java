@@ -17,63 +17,71 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Table(name = "TWEET")
 public class Tweet {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-	private String fromUser;
+  private String fromUser;
 
-	private String text;
+  private String text;
 
-	@JsonIgnore
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "BOARD_ID")
-	private Board board;
+  @JsonIgnore
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "BOARD_ID")
+  private Board board;
 
-	public Tweet() {
-	}
+  public Tweet() {
+  }
 
-	public Tweet(final String fromUser, final String text) {
-		this.fromUser = fromUser;
-		this.text = text;
-	}
+  public Tweet(final String fromUser, final String text) {
+    this.fromUser = fromUser;
+    this.text = text;
+  }
 
-	public Long getId() {
-		return id;
-	}
+  public Long getId() {
+    return id;
+  }
 
-	public void setId(final Long id) {
-		this.id = id;
-	}
+  public void setId(final Long id) {
+    this.id = id;
+  }
 
-	public String getText() {
-		return text;
-	}
+  public String getText() {
+    return text;
+  }
 
-	public void setText(final String text) {
-		this.text = text;
-	}
+  public void setText(final String text) {
+    this.text = text;
+  }
 
-	public String getFromUser() {
-		return fromUser;
-	}
+  public String getFromUser() {
+    return fromUser;
+  }
 
-	public void setFromUser(final String fromUser) {
-		this.fromUser = fromUser;
-	}
+  public void setFromUser(final String fromUser) {
+    this.fromUser = fromUser;
+  }
 
-	public static Tweet toTweet(final org.springframework.social.twitter.api.Tweet tweet) {
-		return new Tweet(tweet.getFromUser(), tweet.getText());
-	}
+  public Board getBoard() {
+    return board;
+  }
 
-	@Override
-	public String toString() {
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			return mapper.writeValueAsString(this);
-		} catch (JsonProcessingException e) {
-			return "";
-		}
-	}
+  public void setBoard(final Board board) {
+    this.board = board;
+  }
+
+  public static Tweet toTweet(final org.springframework.social.twitter.api.Tweet tweet) {
+    return new Tweet(tweet.getFromUser(), tweet.getText());
+  }
+
+  @Override
+  public String toString() {
+    final ObjectMapper mapper = new ObjectMapper();
+    try {
+      return mapper.writeValueAsString(this);
+    } catch (final JsonProcessingException e) {
+      return "";
+    }
+  }
 
 }
