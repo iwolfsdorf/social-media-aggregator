@@ -8,6 +8,10 @@ import ar.com.redbee.social.media.aggregator.model.Tweet;
 
 public interface TweetService {
 
-  public List<Tweet> getPagedByBoard(Board board, int offset, int limit) throws ServiceException;
+  List<Tweet> getPagedByBoard(Board board, Integer page, Integer size) throws ServiceException;
+
+  void loadTweets(Board board) throws ServiceException;
+
+  void deleteAll() throws ServiceException;
 
 }
